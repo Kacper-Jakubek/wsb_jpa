@@ -19,8 +19,14 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
+	// DWUSTRONNA
 	@OneToMany(mappedBy = "visit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<MedicalTreatmentEntity> treatments = new ArrayList<>();
+
+	// DWUSTRONNA
+	@ManyToOne
+	@JoinColumn(name = "doctor_id", nullable = false)
+	private DoctorEntity doctor;
 
 	public Long getId() {
 		return id;

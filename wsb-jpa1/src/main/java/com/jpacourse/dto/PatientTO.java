@@ -1,49 +1,30 @@
-package com.jpacourse.persistance.entity;
+package com.jpacourse.dto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.*;
+public class PatientTO {
 
-@Entity
-@Table(name = "PATIENT")
-public class PatientEntity {
+    private Long id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(nullable = false)
 	private String firstName;
 
-	@Column(nullable = false)
 	private String lastName;
 
-	@Column(nullable = false)
 	private String telephoneNumber;
 
 	private String email;
 
-	@Column(nullable = false)
 	private String patientNumber;
 
-	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
-	private Boolean married; 
+	private Boolean married;
 
-	// JEDNOSTRONNA OD STRONY DZIECKA
-	@ManyToOne
-	@JoinColumn(name = "address_id", nullable = false)
-	private AddressEntity address;
+    private List<VisitTO> finishedVisits = new ArrayList<>();
 
-	// JEDNOSTRONNA OD STRONY RODZICA
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "patient_id", nullable = false)
-	private List<VisitEntity> visits = new ArrayList<>();
-
-	public Long getId() {
+    public Long getId() {
 		return id;
 	}
 
@@ -99,6 +80,13 @@ public class PatientEntity {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public List<VisitTO> getFinishedVisits() {
+		return finishedVisits;
+	}
+
+	public void setFinishedVisits(List<VisitTO> finishedVisits) {
+		this.finishedVisits = finishedVisits;
+	}
 	public Boolean isMarried() {
 		return married;
 	}
@@ -106,20 +94,5 @@ public class PatientEntity {
 	public void setMarried(Boolean married) {
 		this.married = married;
 	}
-
-	public void setAddress(AddressEntity address) {
-		this.address = address;
-	}
-
-	public AddressEntity getAddress() {
-		return address;
-	}
-
-	public List<VisitEntity> getVisits() {
-		return visits;
-	}
-
-	public void setVisits(List<VisitEntity> visits) {
-		this.visits = visits;
-	}
+    
 }

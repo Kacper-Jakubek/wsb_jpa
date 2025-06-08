@@ -33,10 +33,11 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "doctor_id", nullable = false)
+	// DWUSTRONNA
+	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<VisitEntity> visits = new ArrayList<>();
 
+	// JEDNOSTRONNA OD STRONY DZIECKA
 	@ManyToOne
 	@JoinColumn(name = "address_id", nullable = false)
 	private AddressEntity address;
