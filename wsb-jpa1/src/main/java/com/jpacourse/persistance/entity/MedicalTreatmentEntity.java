@@ -18,6 +18,7 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
+	// DWUSTRONNA
 	@ManyToOne
 	@JoinColumn(name = "visit_id", nullable = false)
 	private VisitEntity visit;
