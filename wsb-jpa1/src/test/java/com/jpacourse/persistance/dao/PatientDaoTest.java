@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SpringBootTest
 public class PatientDaoTest
@@ -82,5 +83,20 @@ public class PatientDaoTest
         // then
         final PatientEntity removed = patientDao.findOne(saved.getId());
         assertThat(removed).isNull();
+    }
+
+    @Transactional
+    @Test
+    public void testShouldAddNewVisitToPatient() {
+        // given
+
+        // when
+        final PatientEntity patientWithNewVisit = patientDao.createNewVisitForPatient(901L,901L,LocalDateTime.of(2025, 8, 12, 0, 0, 0, 0), "opis nowej wizyty");
+        System.out.println(patientWithNewVisit.toString());
+        // then
+        assertThat(patientWithNewVisit).isNotNull();
+        assertThat(patientWithNewVisit.getFirstName()).isEqualTo("Piotr");
+        assertThat(patientWithNewVisit.getVisits().get(0).getDescription()).isEqualTo("opis nowej wizyty");
+        assertThat(patientWithNewVisit.getVisits().get(0).getDoctor().getFirstName()).isEqualTo("Jan");
     }
 }

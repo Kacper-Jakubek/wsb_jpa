@@ -38,9 +38,8 @@ public class PatientEntity {
 	@JoinColumn(name = "address_id", nullable = false)
 	private AddressEntity address;
 
-	// JEDNOSTRONNA OD STRONY RODZICA
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "patient_id", nullable = false)
+	// DWUSTRONNA
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<VisitEntity> visits = new ArrayList<>();
 
 	public Long getId() {
