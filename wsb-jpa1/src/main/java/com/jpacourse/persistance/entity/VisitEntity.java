@@ -28,6 +28,11 @@ public class VisitEntity {
 	@JoinColumn(name = "doctor_id", nullable = false)
 	private DoctorEntity doctor;
 
+	// DWUSTRONNA
+	@ManyToOne
+	@JoinColumn(name = "patient_id", nullable = false)
+	private PatientEntity patient;
+
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +55,30 @@ public class VisitEntity {
 
 	public void setTime(LocalDateTime time) {
 		this.time = time;
+	}
+
+	public DoctorEntity getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(DoctorEntity doctor) {
+		this.doctor = doctor;
+	}
+
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
+
+	public List<MedicalTreatmentEntity> getMedicalTreatments() {
+		return treatments;
+	}
+
+	public void setMedicalTreatments(List<MedicalTreatmentEntity> treatments) {
+		this.treatments = treatments;
 	}
 
 }
