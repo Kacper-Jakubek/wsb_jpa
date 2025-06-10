@@ -31,7 +31,10 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
-	private Boolean married; 
+	private Boolean married;
+
+	@Column(nullable = false)
+	private LocalDate registrationDate;
 
 	// JEDNOSTRONNA OD STRONY DZIECKA
 	@ManyToOne
@@ -120,5 +123,13 @@ public class PatientEntity {
 
 	public void setVisits(List<VisitEntity> visits) {
 		this.visits = visits;
+	}
+
+	public LocalDate getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(LocalDate registrationDate) {
+		this.registrationDate = registrationDate;
 	}
 }

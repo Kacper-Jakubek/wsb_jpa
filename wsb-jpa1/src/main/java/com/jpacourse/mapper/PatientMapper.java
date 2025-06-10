@@ -20,6 +20,7 @@ public class PatientMapper {
         final PatientTO patientTO = new PatientTO();
         patientTO.setId(patientEntity.getId());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
+        patientTO.setRegistrationDate(patientEntity.getRegistrationDate());
         patientTO.setEmail(patientEntity.getEmail());
         patientTO.setFirstName(patientEntity.getFirstName());
         patientTO.setLastName(patientEntity.getLastName());
@@ -44,6 +45,7 @@ public class PatientMapper {
         PatientEntity patientEntity = new PatientEntity();
         patientEntity.setId(patientTO.getId());
         patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
+        patientEntity.setRegistrationDate(patientTO.getRegistrationDate());
         patientEntity.setEmail(patientTO.getEmail());
         patientEntity.setFirstName(patientTO.getFirstName());
         patientEntity.setLastName(patientTO.getLastName());

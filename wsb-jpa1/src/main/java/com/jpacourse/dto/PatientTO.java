@@ -20,6 +20,8 @@ public class PatientTO {
 
 	private LocalDate dateOfBirth;
 
+	private LocalDate registrationDate;
+
 	private Boolean married;
 
     private List<VisitTO> finishedVisits = new ArrayList<>();
@@ -95,4 +97,11 @@ public class PatientTO {
 		this.married = married;
 	}
     
+	public LocalDate getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(LocalDate registrationDate) {
+		this.registrationDate = registrationDate;
+	}
 }
